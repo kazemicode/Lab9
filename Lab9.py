@@ -20,6 +20,9 @@ def main():
   # Create and write collage to file
   collage = soundCollage(soundDict, target)
   writeSound(collage, "/collage.wav")
+  
+  reverse = reverseSound(collage)
+  writeSound(reverse, "/reverseCollage.wav")
 
 ##############################################################################     
 # getSnd()  
@@ -114,7 +117,7 @@ def copy(source, target, start):
     setSampleValueAt(target, index + start, value)
   return target
   
-# Problem 3
+# Problem 3: soundCollage
 # Uses copy function to copy sounds to the  target
 # at specifying start points.
 # Sounds are clipped in main method using the clip method
@@ -127,6 +130,17 @@ def soundCollage(soundDictionary, target):
   #explore(target)
   return target
   
-
-    
+# Problem 4: reverseSound
+# Takes a source sound, creates an empty sound of the same length
+# Then, copies the samples from the source in reverse to this new target sound
+# The reversed sound is returned
+def reverseSound(source):
+  length = getLength(source)
+  target = makeEmptySound(length, int(getSamplingRate(source)))
+  for index in range(1, length):
+    value = getSampleValueAt(source, length - index)
+    setSampleValueAt(target, index, value)
+  # normalize volume
+  maxVolume(target)
+  return target
   
