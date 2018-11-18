@@ -1,6 +1,9 @@
+# Sara Kazemi
+# CST 205
 # Lab 9
 
-
+# Run the main method and load the wav files in the input folder
+# Use the order specified, 0-4.
 def main():
   
   # Assemble all sounds for the collage
