@@ -22,6 +22,8 @@ def main():
   
   # Create and write collage to file
   collage = soundCollage(soundDict, target)
+  maxVolume(collage)
+  explore(collage)
   writeSound(collage, "/collage.wav")
   
   reverse = reverseSound(collage)
@@ -61,7 +63,7 @@ def maxSample(sound):
 def maxVolume(sound):
   print "Applying normalization on: ", sound
   largest = maxSample(sound)
-  factor = 32767.0/largest
+  factor = 127.0/largest # highest value in 8 bit depth is 127
   print "Largest sample value in original sound was: ", largest
   print "Multiplying by a factor of: ", factor
   for sample in getSamples(sound):
